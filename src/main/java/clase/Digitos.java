@@ -13,8 +13,8 @@ import static java.awt.Color.blue;
  */
 public class Digitos {
 
-    public static void main(String[] args) {
-        String lexema = "10";
+//    public static void main(String[] args) {
+//        String lexema = "10";
 //        if (lexema.matches("[0-9]{5}")) {
 //            System.out.println("Acepta");
 //
@@ -52,14 +52,14 @@ public class Digitos {
 
         //ER que no cominece con el numero 3, seguido de uno o mas numeros entre 0 y 9 pero que no termine con 9
         //implicitamente tiene longitud de 3
-        if (lexema.matches("^([^3])(\\d)([^9])$")) {
-            System.out.println("Acepta");
-
-        } else {
-            System.out.println("Rechaza");
-        }
-        
-
-    }
+//        if (lexema.matches("^([^3])(\\d)([^9])$")) {
+//            System.out.println("Acepta");
+//
+//        } else {
+//            System.out.println("Rechaza");
+//        }
+//
+//
+//    }
 
 }

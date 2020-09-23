@@ -3,7 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.StringTokenizer;
 
-public class Main {
+public class AnalisisLexico {
     Object[][] tablaSimbolos = new Object[1000][4];
 
     public static String readFileAsString(String fileName) throws Exception {
@@ -56,9 +56,9 @@ public class Main {
         return data;
     }
 
-    public static void main(String[] args) throws Exception {
-        Main pc = new Main();
-        String data = readFileAsString("C:\\Users\\xazak\\IdeaProjects\\ProyectoCompiladores\\src\\main\\java\\practica2FaseLexica\\codigo.txt");
+    public void iniciar(String fileName) throws Exception {
+        AnalisisLexico pc = new AnalisisLexico();
+        String data = readFileAsString(fileName);
         data = removeComments(data);
         data = removeBlankLine(data);
         data = espaciado(data);
@@ -66,15 +66,15 @@ public class Main {
         System.out.println(data);
         System.out.println("------------------End Codigo Preprocesado-----------------");
         StringTokenizer cad = new StringTokenizer(data, " /\n\t\r");
-        String[] lines = data.split("\\s");
-        for (String line : lines) {
-            System.out.println("Elemento de array: " + line);
-        }
+//        String[] lines = data.split("\\s");
+//        for (String line : lines) {
+//            System.out.println("Elemento de array: " + line);
+//        }
         String txtTemp;
         int cont = 0;
         while (cad.hasMoreElements()) {
             txtTemp = cad.nextToken();
-            System.out.println("-" + txtTemp + "-");
+//            System.out.println("-" + txtTemp + "-");
             if (txtTemp.matches("[<>=!]=?")) {
                 System.out.println("Entro " + txtTemp);
                 pc.tablaSimbolos[cont][0] = "Id del token";
@@ -164,4 +164,14 @@ public class Main {
                 System.out.println("\033[34m" + pc.tablaSimbolos[k][0] + "|" + pc.tablaSimbolos[k][1] + "|" + pc.tablaSimbolos[k][2] + "|" + pc.tablaSimbolos[k][3]);
         }
     }
+//    public static void main(String[] args) throws Exception {
+//        AnalisisLexico anaizador = new AnalisisLexico();
+//        anaizador.iniciar("codigo.txt");
+//        if (null != args[0] && args[0].length() > 5) {
+//            anaizador.iniciar(args[0]);
+//            // do more stuff
+//        }else {
+//            System.out.println("Ingresa el nombredel Archivo");
+//        }
+//    }
 }
