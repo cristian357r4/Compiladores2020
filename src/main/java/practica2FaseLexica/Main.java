@@ -1,11 +1,7 @@
 package practica2FaseLexica;
-
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.StringTokenizer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Main {
     Object[][] tablaSimbolos = new Object[1000][4];
@@ -38,6 +34,10 @@ public class Main {
         if (data.contains("==")) {
             data = data.replaceAll("==", " == ");
         }
+//        if (data.contains("[0-9]+")) {
+//            data = data.replaceAll("[0-9]+", " [0-9]+ ");
+//        }
+//TODO h=!==54 preguntar como hacer la separacion != o ==
         if (data.contains("!=")) {
             data = data.replaceAll("!=", " != ");
         }
@@ -83,6 +83,22 @@ public class Main {
                 pc.tablaSimbolos[cont][3] = cont; //columan 3 va la linea en que encontro la palabra
                 cont++;
             }
+            if (txtTemp.matches("\\|\\||\\&\\&")){
+                System.out.println("Entro " + txtTemp);
+                pc.tablaSimbolos[cont][0] = "Id del token";
+                pc.tablaSimbolos[cont][1] = "Oper.Logicos"; //columan 1 va el token
+                pc.tablaSimbolos[cont][2] = txtTemp; //columan 2 va el lexema
+                pc.tablaSimbolos[cont][3] = cont; //columan 3 va la linea en que encontro la palabra
+                cont++;
+            }
+            if (txtTemp.matches("[0-9]+")){
+                System.out.println("Entro " + txtTemp);
+                pc.tablaSimbolos[cont][0] = "Id del token";
+                pc.tablaSimbolos[cont][1] = "Numero"; //columan 1 va el token
+                pc.tablaSimbolos[cont][2] = txtTemp; //columan 2 va el lexema
+                pc.tablaSimbolos[cont][3] = cont; //columan 3 va la linea en que encontro la palabra
+                cont++;
+            }
             if (txtTemp.matches("(\\+)|(-)|(\\*)|(/)")) {
                 System.out.println("Entro " + txtTemp);
                 pc.tablaSimbolos[cont][0] = "Id del token";
@@ -91,20 +107,10 @@ public class Main {
                 pc.tablaSimbolos[cont][3] = cont; //columan 3 va la linea en que encontro la palabra
                 cont++;
             }
-            if (txtTemp.matches("class|public")){
+            if (txtTemp.matches("class|public|if|return|int|string|else|print")){
                 System.out.println("Entro " + txtTemp);
                 pc.tablaSimbolos[cont][0] = "Id del token";
                 pc.tablaSimbolos[cont][1] = "Palabra Reservada"; //columan 1 va el token
-                pc.tablaSimbolos[cont][2] = txtTemp; //columan 2 va el lexema
-                pc.tablaSimbolos[cont][3] = cont; //columan 3 va la linea en que encontro la palabra
-                cont++;
-            }
-//            Pattern if_statement = Pattern.compile("if");
-//            Matcher m = if_statement.matcher(txtTemp);
-            if (txtTemp.matches("if")) {
-                System.out.println("Entro " + txtTemp);
-                pc.tablaSimbolos[cont][0] = "Id del token";
-                pc.tablaSimbolos[cont][1] = "if"; //columan 1 va el token
                 pc.tablaSimbolos[cont][2] = txtTemp; //columan 2 va el lexema
                 pc.tablaSimbolos[cont][3] = cont; //columan 3 va la linea en que encontro la palabra
                 cont++;
@@ -113,15 +119,7 @@ public class Main {
             if (txtTemp.matches(";")) {
                 System.out.println("Entro " + txtTemp);
                 pc.tablaSimbolos[cont][0] = "Id del token";
-                pc.tablaSimbolos[cont][1] = "Semicolon"; //columan 1 va el token
-                pc.tablaSimbolos[cont][2] = txtTemp; //columan 2 va el lexema
-                pc.tablaSimbolos[cont][3] = cont; //columan 3 va la linea en que encontro la palabra
-                cont++;
-            }
-            if (txtTemp.matches("return")) {
-                System.out.println("Entro " + txtTemp);
-                pc.tablaSimbolos[cont][0] = "Id del token";
-                pc.tablaSimbolos[cont][1] = "if"; //columan 1 va el token
+                pc.tablaSimbolos[cont][1] = "Punto y coma"; //columan 1 va el token
                 pc.tablaSimbolos[cont][2] = txtTemp; //columan 2 va el lexema
                 pc.tablaSimbolos[cont][3] = cont; //columan 3 va la linea en que encontro la palabra
                 cont++;

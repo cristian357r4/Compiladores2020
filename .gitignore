@@ -44,3 +44,6 @@ buildNumber.properties
 .idea/vcs.xml
 ProyectoCompiladores.iml
 pom.xml
+src/main/resources/
+src/test/
+!/.idea/
