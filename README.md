@@ -6,7 +6,9 @@ Source code disponible en: https://github.com/cristian357r4/Compiladores2020
 
 Desarrolladores:
 Cristian Estrada Peña
+
 Alfredo Graciano Mejia Martinez
+
 Kenny Gerardo Encarnacion Rodriguez
 
 Para correr el proyecto:
