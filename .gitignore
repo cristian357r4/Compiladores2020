@@ -45,4 +45,4 @@ buildNumber.properties
 ProyectoCompiladores.iml
 src/main/resources/
 src/test/
-!/.idea/
+.idea/

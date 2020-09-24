@@ -1,4 +1,5 @@
 package practica2FaseLexica;
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.StringTokenizer;
@@ -83,7 +84,7 @@ public class AnalisisLexico {
                 pc.tablaSimbolos[cont][3] = cont; //columan 3 va la linea en que encontro la palabra
                 cont++;
             }
-            if (txtTemp.matches("\\|\\||\\&\\&")){
+            if (txtTemp.matches("\\|\\||&&")) {
                 System.out.println("Entro " + txtTemp);
                 pc.tablaSimbolos[cont][0] = "Id del token";
                 pc.tablaSimbolos[cont][1] = "Oper.Logicos"; //columan 1 va el token
@@ -91,7 +92,7 @@ public class AnalisisLexico {
                 pc.tablaSimbolos[cont][3] = cont; //columan 3 va la linea en que encontro la palabra
                 cont++;
             }
-            if (txtTemp.matches("[0-9]+")){
+            if (txtTemp.matches("[0-9]+")) {
                 System.out.println("Entro " + txtTemp);
                 pc.tablaSimbolos[cont][0] = "Id del token";
                 pc.tablaSimbolos[cont][1] = "Numero"; //columan 1 va el token
@@ -107,7 +108,7 @@ public class AnalisisLexico {
                 pc.tablaSimbolos[cont][3] = cont; //columan 3 va la linea en que encontro la palabra
                 cont++;
             }
-            if (txtTemp.matches("class|public|if|return|int|string|else|print")){
+            if (txtTemp.matches("class|public|if|return|int|string|else|print")) {
                 System.out.println("Entro " + txtTemp);
                 pc.tablaSimbolos[cont][0] = "Id del token";
                 pc.tablaSimbolos[cont][1] = "Palabra Reservada"; //columan 1 va el token
@@ -136,7 +137,7 @@ public class AnalisisLexico {
             if (txtTemp.matches("[()]")) {
                 System.out.println("Entro " + txtTemp);
                 pc.tablaSimbolos[cont][0] = "Id del token";
-                pc.tablaSimbolos[cont][1] = txtTemp.matches("\\(")?"Parentesis A":"Parentesis C";
+                pc.tablaSimbolos[cont][1] = txtTemp.matches("\\(") ? "Parentesis A" : "Parentesis C";
                 pc.tablaSimbolos[cont][2] = txtTemp; //columan 2 va el lexema
                 pc.tablaSimbolos[cont][3] = cont; //columan 3 va la linea en que encontro la palabra
                 cont++;
@@ -144,12 +145,12 @@ public class AnalisisLexico {
             if (txtTemp.matches("[{}]")) {
                 System.out.println("Entro " + txtTemp);
                 pc.tablaSimbolos[cont][0] = "Id del token";
-                pc.tablaSimbolos[cont][1] = txtTemp.matches("\\{")?"LLave A":"LLave C";
+                pc.tablaSimbolos[cont][1] = txtTemp.matches("\\{") ? "LLave A" : "LLave C";
                 pc.tablaSimbolos[cont][2] = txtTemp; //columan 2 va el lexema
                 pc.tablaSimbolos[cont][3] = cont; //columan 3 va la linea en que encontro la palabra
                 cont++;
             }
-            if (txtTemp.matches("[A-Z][a-z]+")){
+            if (txtTemp.matches("[A-Z][a-z]+")) {
                 System.out.println("Entro " + txtTemp);
                 pc.tablaSimbolos[cont][0] = "Id del token";
                 pc.tablaSimbolos[cont][1] = "Class Name"; //columan 1 va el token
@@ -158,10 +159,13 @@ public class AnalisisLexico {
                 cont++;
             }
         }
-        System.out.println("\n \u001B[34m TABLA DE SIMBOLOS \n");
+        System.out.println("\n  TABLA DE SIMBOLOS \n");
+        String format = "%-17s%-20s%-15s%-5s\n";
         for (int k = 0; k < pc.tablaSimbolos.length; k++) {
-            if (pc.tablaSimbolos[k][2] != (null))
-                System.out.println("\033[34m" + pc.tablaSimbolos[k][0] + "|" + pc.tablaSimbolos[k][1] + "|" + pc.tablaSimbolos[k][2] + "|" + pc.tablaSimbolos[k][3]);
+            if (pc.tablaSimbolos[k][2] != (null)) {
+//                System.out.printf(pc.tablaSimbolos[k][0] + "\t|\t" + pc.tablaSimbolos[k][1] + "\t|\t" + pc.tablaSimbolos[k][2] + "\t|\t" + pc.tablaSimbolos[k][3]);
+                System.out.printf(format, pc.tablaSimbolos[k][0], pc.tablaSimbolos[k][1], pc.tablaSimbolos[k][2], pc.tablaSimbolos[k][3]);
+            }
         }
     }
 //    public static void main(String[] args) throws Exception {
