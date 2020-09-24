@@ -36,12 +36,6 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
-
-.idea/.gitignore
-.idea/compiler.xml
-.idea/jarRepositories.xml
-.idea/misc.xml
-.idea/vcs.xml
 ProyectoCompiladores.iml
 src/main/resources/
 src/test/
